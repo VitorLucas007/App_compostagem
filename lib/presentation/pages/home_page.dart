@@ -1,66 +1,89 @@
+import 'package:app_compostagem/domain/entites/empresa.dart';
+import 'package:app_compostagem/presentation/controllers/empresa_ctrl.dart';
+import 'package:app_compostagem/presentation/controllers/home_page_ctrl.dart';
 import 'package:app_compostagem/presentation/pages/details_page/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  HomePageCtrl controller = HomePageCtrl();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Nome do App'),
-        backgroundColor: Colors.green,
-        actions: [Icon(Icons.filter_alt)],
-      ),
-      body: GridView.builder(
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Card(
-              elevation: 10,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Container(
-                  child: Align(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: Image(
-                          image: NetworkImage(
-                              'https://img.freepik.com/vetores-gratis/modelo-de-logotipo-de-negocios-de-sustentabilidade-vetor-de-design-de-marca-texto-de-empresa-florestal-mori_53876-140593.jpg?w=2000')),
-                      title: Text('ALGO......'),
-                      subtitle: Text('ALGO.....'),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailsPage()));
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Image.network(
-                          'https://st.depositphotos.com/1784849/2763/i/450/depositphotos_27639295-stock-photo-soybean-field-at-sundown.jpg'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        children: [Text('Descrição.....')],
-                      ),
-                    )
-                  ],
-                ),
-              )),
-            ),
-          );
-        },
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Nome APP'),
+          backgroundColor: Colors.green,
+          actions: [Icon(Icons.filter_alt)],
+        ),
+        body: Column(
+          children: [
+            FutureBuilder(
+                future: controller.search(),
+                builder: ((context, snapshot) {
+                  if (snapshot.hasData) {
+                    return snapshot.data!.fold((failure) {
+                      return const Center(child: Text('Errro....'));
+                    }, (empresas) {
+                      return Expanded(
+                        child: GridView(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                          ),
+                          children: _buildListItens(empresas),
+                        ),
+                      );
+                    });
+                  }
+                  return const CircularProgressIndicator();
+                })),
+          ],
+        ));
   }
+}
+
+List<Widget> _buildListItens(List<Empresa> empresas) {
+  List<Widget> itens = [];
+
+  for (Empresa e in empresas) {
+    itens.add(Padding(
+      padding: const EdgeInsets.all(14.0),
+      child: Card(
+        child: Column(
+          children: [
+            ListTile(
+              leading: Image.network(e.imageLogo),
+              title: Text(e.nomeEmpresa),
+              subtitle: Text(e.cidadeEmpresa),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Image.network(e.image),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Row(
+                children: [
+                  Text(
+                    e.descricao,
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+        elevation: 8,
+      ),
+    ));
+  }
+  return itens;
 }
