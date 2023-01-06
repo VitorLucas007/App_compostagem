@@ -1,10 +1,10 @@
 import 'package:app_compostagem/domain/entites/empresa.dart';
-import 'package:app_compostagem/presentation/controllers/empresa_ctrl.dart';
 import 'package:app_compostagem/presentation/controllers/home_page_ctrl.dart';
 import 'package:app_compostagem/presentation/pages/details_page/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:path/path.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomePageCtrl controller = HomePageCtrl();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,12 +34,15 @@ class _HomePageState extends State<HomePage> {
                       return const Center(child: Text('Errro....'));
                     }, (empresas) {
                       return Expanded(
-                        child: GridView(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: GridView(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 1,
+                            ),
+                            children: _buildListItens(empresas, context),
                           ),
-                          children: _buildListItens(empresas),
                         ),
                       );
                     });
@@ -50,19 +54,21 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-List<Widget> _buildListItens(List<Empresa> empresas) {
+List<Widget> _buildListItens(List<Empresa>empresas, context) {
   List<Widget> itens = [];
 
   for (Empresa e in empresas) {
-    itens.add(Padding(
-      padding: const EdgeInsets.all(14.0),
-      child: Card(
+    itens.add(Card(
+        // ignore: sort_child_properties_last
         child: Column(
           children: [
             ListTile(
               leading: Image.network(e.imageLogo),
               title: Text(e.nomeEmpresa),
               subtitle: Text(e.cidadeEmpresa),
+              onTap: () {
+               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DetailsPage()),);
+              },
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -74,16 +80,18 @@ List<Widget> _buildListItens(List<Empresa> empresas) {
                 children: [
                   Text(
                     e.descricao,
-                    style: TextStyle(fontSize: 10),
+                    style: const TextStyle(fontSize: 10),
                   ),
                 ],
               ),
-            )
-          ],
+        )],
         ),
-        elevation: 8,
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
-    ));
+    );
   }
   return itens;
 }
