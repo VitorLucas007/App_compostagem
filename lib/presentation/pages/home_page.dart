@@ -67,20 +67,25 @@ List<Widget> _buildListItens(List<Empresa>empresas, context) {
               title: Text(e.nomeEmpresa),
               subtitle: Text(e.cidadeEmpresa),
               onTap: () {
-               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DetailsPage()),);
+               Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  DetailsPage(e)),);
               },
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Image.network(e.image),
+              child: Image.network(e.image,
+              scale: 2,),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Row(
+              child: Column(
                 children: [
-                  Text(
-                    e.descricao,
-                    style: const TextStyle(fontSize: 10),
+                  Row(
+                    children: [
+                      Text(
+                        e.descricao,
+                        style: const TextStyle(fontSize: 10.5),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -91,6 +96,7 @@ List<Widget> _buildListItens(List<Empresa>empresas, context) {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
+     
     );
   }
   return itens;
