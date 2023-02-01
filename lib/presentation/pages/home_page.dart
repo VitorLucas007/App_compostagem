@@ -2,9 +2,7 @@ import 'package:app_compostagem/domain/entites/empresa.dart';
 import 'package:app_compostagem/presentation/controllers/home_page_ctrl.dart';
 import 'package:app_compostagem/presentation/pages/details_page/details_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:path/path.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -29,6 +29,13 @@
             {
               "client_id": "535661743183-52padki00msjnn5q5gfm3uu4prvn2ds1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "535661743183-ed3o6f8k3f1057b482s629cm2oje7nm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appCompostagem"
+              }
             }
           ]
         }

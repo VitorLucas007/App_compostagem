@@ -1,12 +1,8 @@
 import 'package:app_compostagem/domain/entites/contato.dart';
 import 'package:app_compostagem/domain/entites/empresa.dart';
 import 'package:app_compostagem/presentation/controllers/details_page_ctrl.dart';
-import 'package:app_compostagem/presentation/pages/home_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class DetailsPage extends StatelessWidget {
   final Empresa empresa;
@@ -57,7 +53,8 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
         child: Column(children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8), color: Color.fromARGB(255, 196, 195, 195)),
+                borderRadius: BorderRadius.circular(8),
+                color: Color.fromARGB(255, 196, 195, 195)),
             height: 150,
             width: 350,
             child: Column(
@@ -98,13 +95,10 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                       padding: EdgeInsets.all(12.0),
                       child: Text(
                         'Produção',
-                        style: TextStyle(fontSize: 25, color: Colors.green),
+                        style: TextStyle(fontSize: 20, color: Colors.green),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Text(c.producao),
-                    )
+                    Text(c.producao),
                   ],
                 )
               ],
@@ -115,7 +109,8 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
           ),
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8), color: Color.fromARGB(255, 196, 195, 195)),
+                borderRadius: BorderRadius.circular(8),
+                color: Color.fromARGB(255, 196, 195, 195)),
             height: 150,
             width: 350,
             child: Column(
@@ -195,7 +190,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                   Row(
                     children: [
                       const Icon(
-                        Icons.email,
+                        Icons.web,
                         color: Colors.white,
                       ),
                       Padding(
