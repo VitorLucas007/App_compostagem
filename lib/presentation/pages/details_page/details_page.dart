@@ -92,10 +92,10 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                 Column(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Produção',
-                        style: TextStyle(fontSize: 20, color: Colors.green),
+                        style: TextStyle(fontSize: 15, color: Colors.green),
                       ),
                     ),
                     Text(c.producao),
