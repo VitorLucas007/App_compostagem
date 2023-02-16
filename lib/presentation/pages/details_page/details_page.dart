@@ -38,7 +38,10 @@ class DetailsPage extends StatelessWidget {
                       );
                     });
                   }
-                  return const CircularProgressIndicator();
+                  return const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
                 })),
           ],
         ));
@@ -54,7 +57,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Color.fromARGB(255, 196, 195, 195)),
+                color: const Color.fromARGB(255, 196, 195, 195)),
             height: 150,
             width: 350,
             child: Column(
@@ -69,8 +72,11 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 5),
-                      child: Text(c.descricao),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Text(
+                        style: const TextStyle(fontSize: 16),
+                        c.descricao
+                        ),
                     )
                   ],
                 )
@@ -83,7 +89,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: Color.fromARGB(255, 196, 195, 195),
+              color: const Color.fromARGB(255, 196, 195, 195),
             ),
             height: 150,
             width: 350,
@@ -95,10 +101,16 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Produção',
-                        style: TextStyle(fontSize: 15, color: Colors.green),
+                        style: TextStyle(fontSize: 20, color: Colors.green),
                       ),
                     ),
-                    Text(c.producao),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0, left: 10.0, top: 10,bottom: 10),
+                      child: Text(
+                        c.producao,
+                        style: const TextStyle(fontSize: 18),
+                        ),
+                    ),
                   ],
                 )
               ],
@@ -110,7 +122,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Color.fromARGB(255, 196, 195, 195)),
+                color: const Color.fromARGB(255, 196, 195, 195)),
             height: 150,
             width: 350,
             child: Column(
@@ -121,12 +133,15 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                       padding: EdgeInsets.all(12.0),
                       child: Text(
                         'Materia Orgânica',
-                        style: TextStyle(fontSize: 25, color: Colors.green),
+                        style: TextStyle(fontSize: 20, color: Colors.green),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Text(c.materiaOrg),
+                      padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+                      child: Text(
+                        style: const TextStyle(fontSize: 18),
+                        c.materiaOrg
+                        ),
                     )
                   ],
                 )
@@ -160,7 +175,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                         child: Text(
                           c.nome,
                           style: const TextStyle(
-                              fontSize: 25, color: Colors.white),
+                              fontSize: 18, color: Colors.white),
                         ),
                       ),
                     ],
@@ -179,7 +194,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                         child: Text(
                           c.telefone,
                           style: const TextStyle(
-                              fontSize: 25, color: Colors.white),
+                              fontSize: 16, color: Colors.white),
                         ),
                       )
                     ],
@@ -190,7 +205,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                   Row(
                     children: [
                       const Icon(
-                        Icons.web,
+                        Icons.web_asset,
                         color: Colors.white,
                       ),
                       Padding(
@@ -198,7 +213,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                         child: Text(
                           c.email,
                           style: const TextStyle(
-                              fontSize: 20, color: Colors.white),
+                              fontSize: 16, color: Colors.white),
                         ),
                       )
                     ],

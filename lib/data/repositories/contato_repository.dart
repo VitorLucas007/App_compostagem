@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 
 class ContatoRepository {
   //PEGANDO DO BANCO
-  Future<Either<Failure, List<Contato>>> all() async {
+ /* Future<Either<Failure, List<Contato>>> all() async {
     return FirebaseFirestore.instance.collection('contatos').get().then((snapshot){
       List<Contato> contatos = [];
       for (QueryDocumentSnapshot doc in snapshot.docs){
@@ -19,7 +19,7 @@ class ContatoRepository {
     }).catchError((error){
       return left<Failure, List<Contato>>(Failure());
     });
-  }
+  }*/
 
 
 //metodo para pegar a coleção contato dentro da coleção empresa
