@@ -18,9 +18,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Nome APP'),
+          title: const Text('THE Composto'),
           backgroundColor: Colors.green,
-          actions: [Icon(Icons.filter_alt)],
+          actions:[
+            TextButton(
+              child: const Icon(
+                Icons.filter_alt,
+                color: Colors.white,
+                ),
+              onPressed: () {}),
+            TextButton(
+              child: const Icon(
+                Icons.info,
+                color: Colors.white,
+              ),
+              onPressed: () {})
+          ]
         ),
         body: Column(
           children: [
@@ -45,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     });
                   }
-                  return const CircularProgressIndicator();
+                  return const Center(child: CircularProgressIndicator());
                 })),
           ],
         ));
@@ -63,15 +76,16 @@ List<Widget> _buildListItens(List<Empresa>empresas, context) {
             ListTile(
               leading: Image.network(e.imageLogo),
               title: Text(e.nomeEmpresa),
-              subtitle: Text(e.cidadeEmpresa),
+              subtitle: Text(e.bairo),
               onTap: () {
                Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  DetailsPage(e)),);
               },
             ),
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(8.0),
               child: Image.network(e.image,
-              scale: 2,),
+              height: 250,
+              scale: 1.9,),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -81,7 +95,7 @@ List<Widget> _buildListItens(List<Empresa>empresas, context) {
                     children: [
                       Text(
                         e.descricao,
-                        style: const TextStyle(fontSize: 10.5),
+                        style: const TextStyle(fontSize: 10),                       
                       ),
                     ],
                   ),

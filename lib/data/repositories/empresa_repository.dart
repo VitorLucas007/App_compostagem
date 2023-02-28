@@ -12,7 +12,7 @@ class EmpresaRepository{
       for (QueryDocumentSnapshot doc in snapshot.docs){
         final json = doc.data() as Map<String, dynamic>;
         json['id'] = doc.id;
-        Empresa empresa = Empresa(json['id'], json['imageLogo'], json['nomeEmpresa'], json['cidadeEmpresa'], json['image'], json['descricao']);
+        Empresa empresa = Empresa(json['id'], json['imageLogo'], json['nomeEmpresa'], json['bairo'], json['image'], json['descricao']);
         empresas.add(empresa);
       }
       return right<Failure, List<Empresa>>(empresas);

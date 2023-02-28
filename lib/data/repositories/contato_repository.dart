@@ -30,7 +30,7 @@ class ContatoRepository {
         final json = doc.data() as Map<String, dynamic>;
         json['id'] = doc.id;
         Contato contato = Contato
-            (json['id'], json['descricao'], json['producao'], json['materiaOrg'], json['image'], json['nome'], json['telefone'], json['email']);
+            (json['id'], json['descricao'], json['producao'], json['materiaOrg'], json['image'], json['contato'], json['contato2'], json['contato3'], json['telefone'],json['telefone2'], json['telefone3'], json['email'], json['local']);
         contatos.add(contato);
       }      
       return right<Failure, List<Contato>>(contatos);

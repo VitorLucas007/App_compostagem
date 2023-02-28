@@ -4,10 +4,17 @@ import 'package:app_compostagem/presentation/controllers/details_page_ctrl.dart'
 import 'package:flutter/material.dart';
 
 
-class DetailsPage extends StatelessWidget {
+class DetailsPage extends StatefulWidget {
   final Empresa empresa;
-  DetailsPageCtrl controller = DetailsPageCtrl();
+
   DetailsPage(this.empresa, {super.key});
+
+  @override
+  State<DetailsPage> createState() => _DetailsPageState();
+}
+
+class _DetailsPageState extends State<DetailsPage> {
+  DetailsPageCtrl controller = DetailsPageCtrl();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,7 @@ class DetailsPage extends StatelessWidget {
         body: Column(
           children: [
             FutureBuilder(
-                future: controller.search(empresa),
+                future: controller.search(widget.empresa),
                 builder: ((context, snapshot) {
                   if (snapshot.hasData) {
                     return snapshot.data!.fold((failure) {
@@ -32,7 +39,7 @@ class DetailsPage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: ListView(
-                            children: _buildListItens(empresa, contatos),
+                            children: _buildListItens(widget.empresa, contatos),
                           ),
                         ),
                       );
@@ -58,7 +65,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: const Color.fromARGB(255, 196, 195, 195)),
-            height: 150,
+            height: 250,
             width: 350,
             child: Column(
               children: [
@@ -91,7 +98,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
               borderRadius: BorderRadius.circular(8),
               color: const Color.fromARGB(255, 196, 195, 195),
             ),
-            height: 150,
+            height: 300,
             width: 350,
             child: Column(
               children: [
@@ -129,17 +136,18 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
               children: [
                 Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.all(12.0),
+                      const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
-                        'Materia Orgânica',
-                        style: TextStyle(fontSize: 20, color: Colors.green),
-                      ),
+                          'Materia Orgânica',
+                          style: TextStyle(fontSize: 18, color: Colors.green),
+                        ),
                     ),
+                    
                     Padding(
                       padding: const EdgeInsets.only(right: 10.0, left: 10.0),
                       child: Text(
-                        style: const TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 15),
                         c.materiaOrg
                         ),
                     )
@@ -151,6 +159,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
           const SizedBox(
             height: 20,
           ),
+
           Image.network(c.image),
           const SizedBox(
             height: 25,
@@ -159,7 +168,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8), color: Colors.green),
             height: 400,
-            width: 300,
+            width: 500,
             child: Padding(
               padding: const EdgeInsets.all(30.0),
               child: Column(
@@ -173,7 +182,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                       Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Text(
-                          c.nome,
+                          c.contato,
                           style: const TextStyle(
                               fontSize: 18, color: Colors.white),
                         ),
@@ -205,17 +214,40 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                   Row(
                     children: [
                       const Icon(
-                        Icons.web_asset,
+                        Icons.language,
                         color: Colors.white,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 5),
                         child: Text(
                           c.email,
                           style: const TextStyle(
-                              fontSize: 16, color: Colors.white),
+                              fontSize: 15, color: Colors.white),
                         ),
                       )
+                    ],
+                  ),
+                  const SizedBox(height: 20,),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.send,
+                          color: Colors.white,),
+                          Column(
+                            children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(c.endereco,
+                            style: const TextStyle(
+                              fontSize: 9, color: Colors.white),
+                            ),
+                          )
+                            ],
+                          ),
+
+                        ],
+                      ),
                     ],
                   )
                 ],
