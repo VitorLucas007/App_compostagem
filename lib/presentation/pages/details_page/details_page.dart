@@ -3,7 +3,6 @@ import 'package:app_compostagem/domain/entites/empresa.dart';
 import 'package:app_compostagem/presentation/controllers/details_page_ctrl.dart';
 import 'package:flutter/material.dart';
 
-
 class DetailsPage extends StatefulWidget {
   final Empresa empresa;
 
@@ -81,9 +80,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Text(
-                        style: const TextStyle(fontSize: 16),
-                        c.descricao
-                        ),
+                          style: const TextStyle(fontSize: 16), c.descricao),
                     )
                   ],
                 )
@@ -112,11 +109,12 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 10.0, left: 10.0, top: 10,bottom: 10),
+                      padding: const EdgeInsets.only(
+                          right: 10.0, left: 10.0, top: 10, bottom: 10),
                       child: Text(
                         c.producao,
                         style: const TextStyle(fontSize: 18),
-                        ),
+                      ),
                     ),
                   ],
                 )
@@ -136,20 +134,17 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
               children: [
                 Column(
                   children: [
-                      const Padding(
+                    const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                          'Materia Orgânica',
-                          style: TextStyle(fontSize: 18, color: Colors.green),
-                        ),
+                        'Materia Orgânica',
+                        style: TextStyle(fontSize: 18, color: Colors.green),
+                      ),
                     ),
-                    
                     Padding(
                       padding: const EdgeInsets.only(right: 10.0, left: 10.0),
                       child: Text(
-                        style: const TextStyle(fontSize: 15),
-                        c.materiaOrg
-                        ),
+                          style: const TextStyle(fontSize: 15), c.materiaOrg),
                     )
                   ],
                 )
@@ -159,7 +154,6 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
           const SizedBox(
             height: 20,
           ),
-
           Image.network(c.image),
           const SizedBox(
             height: 25,
@@ -172,6 +166,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
             child: Padding(
               padding: const EdgeInsets.all(30.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -227,26 +222,20 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                       )
                     ],
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.send,
-                          color: Colors.white,),
-                          Column(
-                            children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Text(c.endereco,
-                            style: const TextStyle(
-                              fontSize: 9, color: Colors.white),
-                            ),
-                          )
-                            ],
-                          ),
-
-                        ],
+                      const Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        c.endereco,
+                        style:
+                            const TextStyle(fontSize: 12, color: Colors.white),
                       ),
                     ],
                   )

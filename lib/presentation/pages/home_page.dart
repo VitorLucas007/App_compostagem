@@ -85,23 +85,20 @@ List<Widget> _buildListItens(List<Empresa>empresas, context) {
               },
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Image.network(e.image,
-              height: 250,
-              scale: 1.9,),
+              height: 200,
+              scale: 1,),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.all(12),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
                       Text(
                         e.descricao,
-                        style: const TextStyle(fontSize: 10),                       
+                        style: const TextStyle(fontSize: 12 ),                       
                       ),
-                    ],
-                  ),
                 ],
               ),
         )],
