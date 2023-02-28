@@ -1,4 +1,3 @@
-import 'package:app_compostagem/domain/entites/contato.dart';
 import 'package:app_compostagem/domain/entites/empresa.dart';
 import 'package:app_compostagem/domain/failures/failure.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

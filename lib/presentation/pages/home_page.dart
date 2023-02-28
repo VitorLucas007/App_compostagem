@@ -1,6 +1,7 @@
 import 'package:app_compostagem/domain/entites/empresa.dart';
 import 'package:app_compostagem/presentation/controllers/home_page_ctrl.dart';
 import 'package:app_compostagem/presentation/pages/details_page/details_page.dart';
+import 'package:app_compostagem/presentation/pages/information_page/information_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -32,7 +33,9 @@ class _HomePageState extends State<HomePage> {
                 Icons.info,
                 color: Colors.white,
               ),
-              onPressed: () {})
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  InformationPage()),);
+              })
           ]
         ),
         body: Column(
