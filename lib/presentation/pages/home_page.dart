@@ -84,20 +84,19 @@ List<Widget> _buildListItens(List<Empresa>empresas, context) {
                Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  DetailsPage(e)),);
               },
             ),
+            Expanded(child: Image.network(e.image,
+              height: 205,
+              width: 320,
+              ),),
+
             Padding(
-              padding: const EdgeInsets.all(8),
-              child: Image.network(e.image,
-              height: 200,
-              scale: 1,),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.only(left: 15, bottom: 25, right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                       Text(
                         e.descricao,
-                        style: const TextStyle(fontSize: 12 ),                       
+                        style: const TextStyle(fontSize: 13 ),                       
                       ),
                 ],
               ),

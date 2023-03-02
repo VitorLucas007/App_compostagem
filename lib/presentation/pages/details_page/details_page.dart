@@ -1,6 +1,8 @@
+import 'package:app_compostagem/data/repositories/contato_repository.dart';
 import 'package:app_compostagem/domain/entites/contato.dart';
 import 'package:app_compostagem/domain/entites/empresa.dart';
 import 'package:app_compostagem/presentation/controllers/details_page_ctrl.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -154,7 +156,66 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
           const SizedBox(
             height: 20,
           ),
-          Image.network(c.image),
+          // COMPONENTE DO CARROSEL <INICIO>
+          // Image.network(c.imagens),
+          CarouselSlider(
+              items: [
+                Container(
+                  margin: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                      image: NetworkImage(c.image),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                // IMAGEM 2
+                Container(
+                  margin: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                      image: NetworkImage(c.image2),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                // IMAGEM 3
+                Container(
+                  margin: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                      image: NetworkImage(c.image3),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                      image: NetworkImage(c.image4),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                //IMAGEM 4
+              ],
+              options: CarouselOptions(
+                height: 380.0,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                aspectRatio: 16 / 9,
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enableInfiniteScroll: true,
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                viewportFraction: 0.8,
+              )),
+
+          // COMPONENTE DO CARROSEL <FIM>
           const SizedBox(
             height: 25,
           ),
@@ -213,7 +274,7 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                         color: Colors.white,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 5),
+                        padding: const EdgeInsets.all(8),
                         child: Text(
                           c.email,
                           style: const TextStyle(
@@ -225,20 +286,24 @@ List<Widget> _buildListItens(Empresa empresas, List<Contato> contatos) {
                   const SizedBox(
                     height: 20,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Stack(
                     children: [
                       const Icon(
                         Icons.send,
                         color: Colors.white,
                       ),
-                      Text(
-                        c.endereco,
-                        style:
-                            const TextStyle(fontSize: 12, color: Colors.white),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Text(
+                          c.endereco,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

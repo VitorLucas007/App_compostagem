@@ -4,6 +4,9 @@ class Contato {
   String producao;
   String materiaOrg;
   String image;
+  String image2;
+  String image3;
+  String image4;
   String contato;
   String contato2;
   String contato3;
@@ -13,5 +16,21 @@ class Contato {
   String email;
   String endereco;
 
-  Contato(this.id, this.descricao, this.producao, this.materiaOrg, this.image, this.contato, this.contato2, this.contato3, this.telefone, this.telefone2, this.telefone3, this.email, this.endereco);
+  Contato(
+      this.id,
+      this.descricao,
+      this.producao,
+      this.materiaOrg,
+      this.image,
+      this.image2,
+      this.image3,
+      this.image4,
+      this.contato,
+      this.contato2,
+      this.contato3,
+      this.telefone,
+      this.telefone2,
+      this.telefone3,
+      this.email,
+      this.endereco);
 }

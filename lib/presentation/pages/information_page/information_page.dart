@@ -1,9 +1,7 @@
 import 'package:app_compostagem/domain/entites/informacao.dart';
-import 'package:app_compostagem/domain/failures/failure.dart';
 import 'package:app_compostagem/presentation/controllers/information_ctrl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 
 class InformationPage extends StatefulWidget {
   const InformationPage({super.key});
